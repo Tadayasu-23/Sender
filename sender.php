@@ -1,22 +1,28 @@
 <?php
 $forma_obrashchenya="Форма обращения родителей";
 error_reporting(E_ERROR);
-if (isset($_POST[name])) {
- $name=$_POST[name];
+if (isset($_POST['name'])) {
+ $name=$_POST['name'];
  if($name=='') {
   unset($name);
  }
 }
-if (isset($_POST[email])) {
- $email=$_POST[email];
+if (isset($_POST['email'])) {
+ $email=$_POST['email'];
  if($email=='') {
   unset($email);
  }
 }
-if (isset($_POST[phone])) {
- $phone=$_POST[phone];
+if (isset($_POST['phone'])) {
+ $phone=$_POST['phone'];
  if($phone=='') {
   unset($phone);
+ }
+}
+if (isset($_POST['button'])) {
+ $button=$_POST['button'];
+ if($button=='') {
+  unset($button);
  }
 }
 
@@ -36,7 +42,7 @@ if (isset($phone)) {
 $address="Tadayasu@yandex.ru"
 $note_text="Имя: $name \r\n Почта: $email \r\n Телефон: $phone \r\n "
 
-if (isset($name)) {
+if (isset($name)&&($button)) {
  mail($address, $forma_obrashchenya, $note_text, "Content-type:text/plain; windows-1251");
 
 echo "<p>форма отправлена<p>"
